@@ -15,7 +15,18 @@ from rest_framework_simplejwt import views as jwt_views
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
+
+
 class Auth(jwt_views.TokenObtainPairView):
+    """_summary_
+
+    Args:
+        jwt_views (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    
 
     serializer_class = serializers.AuthTokenSystem
 
@@ -34,6 +45,8 @@ class Auth(jwt_views.TokenObtainPairView):
 
 #CLEAR 
 def clear():
+    """_summary_
+    """
     necessary_time = timezone.now()- timezone.timedelta(minutes=1) # Отрегулируйте время по необходимости
     objects_to_delete = User.objects.filter(Q(auth_data__lt=necessary_time)).exclude( auth_code_1=F('auth_code_2'))
     print(objects_to_delete)
@@ -41,7 +54,15 @@ def clear():
 
 #READ USERS
 class R_Users(generics.ListAPIView, generics.RetrieveAPIView):
+    """_summary_
 
+    Args:
+        generics (_type_): _description_
+        generics (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
 
     authentication_classes = [JWTAuthentication, SessionAuthentication]  
     permission_classes = [IsAuthenticated]  
@@ -70,7 +91,15 @@ class R_Users(generics.ListAPIView, generics.RetrieveAPIView):
 
 #READ UPDATE DELETE USERS
 class RUD_Users(generics.ListAPIView, generics.RetrieveAPIView):
+    """_summary_
 
+    Args:
+        generics (_type_): _description_
+        generics (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
 
     authentication_classes = [JWTAuthentication, SessionAuthentication] 
     permission_classes = [IsAuthenticated] 
@@ -141,8 +170,15 @@ class RUD_Users(generics.ListAPIView, generics.RetrieveAPIView):
     
 #CREATE USERS PART 1
 class C_1_Users(generics.ListAPIView, generics.RetrieveAPIView):
+    """_summary_
 
+    Args:
+        generics (_type_): _description_
+        generics (_type_): _description_
 
+    Returns:
+        _type_: _description_
+    """
     # authentication_classes = [JWTAuthentication, SessionAuthentication] 
     # permission_classes = [IsAuthenticated] 
 
@@ -165,7 +201,15 @@ class C_1_Users(generics.ListAPIView, generics.RetrieveAPIView):
 
 #CREATE USERS PART 2
 class C_2_Users(generics.ListAPIView, generics.RetrieveAPIView):
+    """AI is creating summary for C_2_Users
 
+    Args:
+        generics ([type]): [description]
+        generics ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
 
     # authentication_classes = [JWTAuthentication, SessionAuthentication] 
     # permission_classes = [IsAuthenticated] 
